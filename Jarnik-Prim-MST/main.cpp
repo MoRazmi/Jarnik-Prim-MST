@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include "graph.h"
+#include "min_spanning_tree.h"
 
 using namespace std;
 
@@ -26,6 +27,7 @@ int main()
     g_test.add_edge(4, 6, 5);
     g_test.add_edge(6, 8, 5);
 
+    mst m{};
     cout << g_test;
-
+    m.prim_spanning_tree(g_test);
 }
