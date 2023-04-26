@@ -2,6 +2,10 @@
 //
 
 #include <iostream>
+#include <fstream>
+#include <string>
+#include <tuple>
+
 #include "graph.h"
 #include "min_spanning_tree.h"
 
@@ -30,4 +34,20 @@ int main()
     mst m{};
     cout << g_test;
     m.prim_spanning_tree(g_test);
+
+    ifstream input("data.txt");
+    string line;
+    getline(input, line);
+    int num_nodes = stoi(line);
+
+    graph g_file(num_nodes);
+
+    int node_1, node_2, edge;
+    while (input >> node_1 >> node_2 >> edge) 
+    {
+        g_file.add_edge(node_1, node_2, edge);
+    }
+    mst n{};
+    cout << n.prim_spanning_tree(g_file) << endl;
+    cout << n.get_mst_distance()<< endl;
 }
